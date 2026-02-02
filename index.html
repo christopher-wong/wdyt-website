@@ -179,97 +179,6 @@
       font-weight: 600;
     }
 
-    /* ---- PHONE MOCKUP ---- */
-    .phone-showcase {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 40px 24px 0;
-      display: flex;
-      justify-content: center;
-      position: relative;
-    }
-
-    .phone-frame {
-      width: 280px;
-      background: var(--gray-800);
-      border-radius: 40px;
-      padding: 12px;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
-      position: relative;
-      z-index: 2;
-    }
-
-    .phone-screen {
-      border-radius: 30px;
-      overflow: hidden;
-    }
-
-    .phone-screen img {
-      width: 100%;
-      display: block;
-    }
-
-    /* floating notification cards */
-    .floating-cards {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-    }
-
-    .float-card {
-      position: absolute;
-      background: #fff;
-      border-radius: 16px;
-      padding: 14px 18px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04);
-      font-size: 13px;
-      white-space: nowrap;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .float-card strong {
-      display: block;
-      font-weight: 700;
-      margin-bottom: 2px;
-    }
-
-    .float-card span {
-      color: var(--gray-400);
-      font-size: 12px;
-    }
-
-    .float-card:nth-child(1) {
-      top: 20%;
-      left: 5%;
-      animation-delay: 0s;
-    }
-
-    .float-card:nth-child(2) {
-      top: 40%;
-      right: 5%;
-      animation-delay: -2s;
-    }
-
-    .float-card:nth-child(3) {
-      bottom: 25%;
-      left: 8%;
-      animation-delay: -4s;
-    }
-
-    .float-card:nth-child(4) {
-      bottom: 35%;
-      right: 8%;
-      animation-delay: -1s;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
     /* ---- FEATURE SECTIONS ---- */
     .feature-section {
       max-width: 1080px;
@@ -505,16 +414,8 @@
         grid-template-columns: 1fr 1fr;
       }
 
-      .floating-cards {
-        display: none;
-      }
-
       .nav-links a:not(.nav-cta) {
         display: none;
-      }
-
-      .phone-frame {
-        width: 240px;
       }
     }
   </style>
@@ -559,33 +460,6 @@
     </div>
   </section>
 
-  <!-- PHONE SHOWCASE -->
-  <section class="phone-showcase">
-    <div class="floating-cards">
-      <div class="float-card">
-        <strong>Alex rated your idea</strong>
-        <span>Tap to see the results</span>
-      </div>
-      <div class="float-card">
-        <strong>You're both into it!</strong>
-        <span>Average: 8.5</span>
-      </div>
-      <div class="float-card">
-        <strong>New idea from Jordan</strong>
-        <span>"Road trip this weekend?"</span>
-      </div>
-      <div class="float-card">
-        <strong>You two are far apart</strong>
-        <span>Average: 5.0</span>
-      </div>
-    </div>
-    <div class="phone-frame">
-      <div class="phone-screen">
-        <img src="screenshot-welcome.png" alt="WDYT app welcome screen">
-      </div>
-    </div>
-  </section>
-
   <!-- FEATURE 1: BLIND VOTING -->
   <section class="feature-section" id="features">
     <div class="feature-grid">
@@ -612,6 +486,21 @@
       <div class="feature-text">
         <h2>See where you stand.</h2>
         <p>Once both votes are in, WDYT reveals the full picture. See individual ratings side by side, the combined average, and a clear verdict. No more guessing what the other person really thinks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE 3: PROFILE -->
+  <section class="feature-section">
+    <div class="feature-grid">
+      <div class="feature-text">
+        <h2>Track your taste.</h2>
+        <p>See your stats at a glance: total ratings, your average score, and how often you rate higher or lower than your friend. Invite a partner and start comparing takes.</p>
+      </div>
+      <div class="feature-visual">
+        <div class="feature-phone">
+          <img src="screenshot-profile.png" alt="WDYT profile screen showing your stats">
+        </div>
       </div>
     </div>
   </section>
