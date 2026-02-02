@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WDYT - What Do You Think?</title>
+  <link rel="icon" type="image/png" href="appicon.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --purple: #5E5CE6;
+      --pink: #FF6B8A;
+      --dark: #0a0a0a;
+      --gray-100: #f5f5f7;
+      --gray-200: #e8e8ed;
+      --gray-400: #86868b;
+      --gray-600: #6e6e73;
+      --gray-800: #1d1d1f;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--gray-800);
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--gray-800);
+    }
+
+    .nav-brand img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+    }
+
+    .nav-brand span {
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray-600);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gray-800);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: 980px;
+      background: var(--gray-800);
+      color: #fff !important;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: #000;
+    }
+
+    .nav-cta svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      padding: 160px 24px 80px;
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--gray-800);
+    }
+
+    .hero p {
+      margin-top: 24px;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.6;
+      color: var(--gray-600);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-badges {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--gray-600);
+    }
+
+    .hero-badge-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .hero-badge strong {
+      display: block;
+      color: var(--gray-800);
+      font-weight: 600;
+    }
+
+    /* ---- PHONE MOCKUP ---- */
+    .phone-showcase {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 24px 0;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .phone-frame {
+      width: 280px;
+      background: var(--gray-800);
+      border-radius: 40px;
+      padding: 12px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
+      position: relative;
+      z-index: 2;
+    }
+
+    .phone-screen {
+      background: #fff;
+      border-radius: 30px;
+      overflow: hidden;
+      aspect-ratio: 9/19.5;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .phone-status-bar {
+      padding: 12px 24px 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .phone-notch {
+      width: 100px;
+      height: 28px;
+      background: var(--gray-800);
+      border-radius: 20px;
+      margin: 0 auto;
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+    }
+
+    .phone-content {
+      flex: 1;
+      padding: 48px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .phone-header {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .phone-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--gray-400);
+      margin-top: 4px;
+    }
+
+    .phone-card {
+      background: var(--gray-100);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .phone-card-prompt {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-800);
+      line-height: 1.4;
+    }
+
+    .phone-card-meta {
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--gray-400);
+    }
+
+    .phone-card-ratings {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .rating-pill {
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .rating-purple {
+      background: rgba(94,92,230,0.12);
+      color: var(--purple);
+    }
+
+    .rating-pink {
+      background: rgba(255,107,138,0.12);
+      color: var(--pink);
+    }
+
+    .rating-avg {
+      font-size: 11px;
+      color: var(--gray-400);
+      margin-left: auto;
+    }
+
+    .phone-verdict {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--purple);
+      margin-top: 4px;
+    }
+
+    .phone-fab {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 300;
+      align-self: flex-end;
+      margin-top: auto;
+      box-shadow: 0 4px 16px rgba(94,92,230,0.4);
+    }
+
+    /* floating notification cards */
+    .floating-cards {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    .float-card {
+      position: absolute;
+      background: #fff;
+      border-radius: 16px;
+      padding: 14px 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04);
+      font-size: 13px;
+      white-space: nowrap;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .float-card strong {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .float-card span {
+      color: var(--gray-400);
+      font-size: 12px;
+    }
+
+    .float-card:nth-child(1) {
+      top: 20%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+
+    .float-card:nth-child(2) {
+      top: 40%;
+      right: 5%;
+      animation-delay: -2s;
+    }
+
+    .float-card:nth-child(3) {
+      bottom: 25%;
+      left: 8%;
+      animation-delay: -4s;
+    }
+
+    .float-card:nth-child(4) {
+      bottom: 35%;
+      right: 8%;
+      animation-delay: -1s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* ---- FEATURE SECTIONS ---- */
+    .feature-section {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 120px 24px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .feature-text h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .feature-text p {
+      margin-top: 20px;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--gray-600);
+    }
+
+    .feature-visual {
+      position: relative;
+    }
+
+    .feature-demo {
+      background: var(--gray-100);
+      border-radius: 24px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    /* blind voting visual */
+    .blind-demo {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    .blind-card {
+      flex: 1;
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .blind-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .blind-name {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .blind-rating {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .blind-hidden {
+      font-size: 32px;
+      color: var(--gray-200);
+      letter-spacing: 4px;
+    }
+
+    .blind-label {
+      font-size: 12px;
+      color: var(--gray-400);
+      margin-top: 4px;
+    }
+
+    /* results visual */
+    .results-demo {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .results-prompt {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--gray-800);
+    }
+
+    .results-bar-track {
+      height: 8px;
+      background: var(--gray-100);
+      border-radius: 4px;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .results-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+    }
+
+    .results-markers {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin-top: -30px;
+      margin-bottom: 24px;
+      padding: 0 2px;
+    }
+
+    .results-marker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .marker-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .marker-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gray-400);
+    }
+
+    .results-average {
+      text-align: center;
+      padding-top: 16px;
+      border-top: 1px solid var(--gray-100);
+    }
+
+    .results-average-number {
+      font-size: 48px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .results-average-label {
+      font-size: 13px;
+      color: var(--gray-400);
+      margin-bottom: 4px;
+    }
+
+    .results-verdict {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: rgba(94,92,230,0.08);
+      color: var(--purple);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* ---- DARK SECTION ---- */
+    .dark-section {
+      background: var(--dark);
+      color: #fff;
+      padding: 120px 24px;
+      text-align: center;
+    }
+
+    .dark-section h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .dark-section p {
+      margin-top: 20px;
+      font-size: 17px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .how-it-works {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      max-width: 900px;
+      margin: 64px auto 0;
+    }
+
+    .step {
+      text-align: center;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-weight: 800;
+      font-size: 18px;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+    }
+
+    .step h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ---- CTA ---- */
+    .cta-section {
+      padding: 120px 24px;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .cta-section p {
+      margin-top: 16px;
+      font-size: 17px;
+      color: var(--gray-600);
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 32px;
+      padding: 16px 32px;
+      border-radius: 980px;
+      background: var(--gray-800);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .cta-button:hover {
+      background: #000;
+      transform: scale(1.02);
+    }
+
+    .cta-button svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      border-top: 1px solid var(--gray-200);
+      padding: 64px 24px;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 48px;
+    }
+
+    .footer-brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    .footer-brand p {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--gray-400);
+      line-height: 1.6;
+    }
+
+    .footer-col h4 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--gray-400);
+      margin-bottom: 16px;
+    }
+
+    .footer-col a {
+      display: block;
+      text-decoration: none;
+      color: var(--gray-600);
+      font-size: 14px;
+      padding: 4px 0;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--gray-800);
+    }
+
+    .footer-bottom {
+      max-width: 1080px;
+      margin: 40px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--gray-200);
+      font-size: 13px;
+      color: var(--gray-400);
+      text-align: center;
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 768px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .feature-grid.reverse .feature-text {
+        order: -1;
+      }
+
+      .how-it-works {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .floating-cards {
+        display: none;
+      }
+
+      .nav-links a:not(.nav-cta) {
+        display: none;
+      }
+
+      .phone-frame {
+        width: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <img src="appicon.png" alt="WDYT">
+        <span>WDYT</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#" class="nav-cta">
+          Get the app
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Honest opinions,<br>no&nbsp;influence.</h1>
+    <p>WDYT lets two people rate the same idea independently. Ratings stay hidden until both sides vote, so nobody gets swayed. See where you really stand.</p>
+    <div class="hero-badges">
+      <div class="hero-badge">
+        <div class="hero-badge-icon">&#x1F648;</div>
+        <div><strong>Blind Voting</strong>No peeking</div>
+      </div>
+      <div class="hero-badge">
+        <div class="hero-badge-icon">&#x1F91D;</div>
+        <div><strong>Built for Two</strong>Honest decisions</div>
+      </div>
+      <div class="hero-badge">
+        <div class="hero-badge-icon">&#x1F512;</div>
+        <div><strong>Passwordless</strong>Passkey sign-in</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHONE SHOWCASE -->
+  <section class="phone-showcase">
+    <div class="floating-cards">
+      <div class="float-card">
+        <strong>Alex rated your idea</strong>
+        <span>Tap to see the results</span>
+      </div>
+      <div class="float-card">
+        <strong>You're both into it!</strong>
+        <span>Average: 8.5</span>
+      </div>
+      <div class="float-card">
+        <strong>New idea from Jordan</strong>
+        <span>"Road trip this weekend?"</span>
+      </div>
+      <div class="float-card">
+        <strong>You two are far apart</strong>
+        <span>Average: 5.0</span>
+      </div>
+    </div>
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="phone-content">
+          <div class="phone-header">Ideas</div>
+
+          <div class="phone-section-label">Waiting for your vote</div>
+          <div class="phone-card">
+            <div class="phone-card-prompt">Try that new ramen place downtown?</div>
+            <div class="phone-card-meta">From Alex</div>
+          </div>
+
+          <div class="phone-section-label">Results</div>
+          <div class="phone-card">
+            <div class="phone-card-prompt">Weekend camping trip</div>
+            <div class="phone-card-ratings">
+              <span class="rating-pill rating-purple">You: 9</span>
+              <span class="rating-pill rating-pink">Alex: 8</span>
+              <span class="rating-avg">Avg 8.5</span>
+            </div>
+            <div class="phone-verdict">You're both into it!</div>
+          </div>
+
+          <div class="phone-card">
+            <div class="phone-card-prompt">Learn pottery together</div>
+            <div class="phone-card-ratings">
+              <span class="rating-pill rating-purple">You: 3</span>
+              <span class="rating-pill rating-pink">Alex: 7</span>
+              <span class="rating-avg">Avg 5.0</span>
+            </div>
+            <div class="phone-verdict">You two are far apart on this.</div>
+          </div>
+
+          <div class="phone-fab">+</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE 1: BLIND VOTING -->
+  <section class="feature-section" id="features">
+    <div class="feature-grid">
+      <div class="feature-text">
+        <h2>Rate without bias.</h2>
+        <p>When you send an idea, your rating stays hidden. Your friend votes without seeing your score. Only when both of you have weighed in do the results appear. No anchoring. No pressure. Just honest takes.</p>
+      </div>
+      <div class="feature-visual">
+        <div class="feature-demo">
+          <div class="blind-demo">
+            <div class="blind-card">
+              <div class="blind-avatar" style="background: var(--purple);">Y</div>
+              <div class="blind-name">You</div>
+              <div class="blind-rating" style="color: var(--purple);">8</div>
+              <div class="blind-label">Voted</div>
+            </div>
+            <div class="blind-card">
+              <div class="blind-avatar" style="background: var(--pink);">A</div>
+              <div class="blind-name">Alex</div>
+              <div class="blind-hidden">? ? ?</div>
+              <div class="blind-label">Waiting...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE 2: RESULTS -->
+  <section class="feature-section">
+    <div class="feature-grid reverse">
+      <div class="feature-visual">
+        <div class="feature-demo">
+          <div class="results-demo">
+            <div class="results-prompt">"Move in together?"</div>
+            <div class="results-bar-track">
+              <div class="results-bar-fill" style="width: 85%;"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 0 2px; margin-bottom: 24px;">
+              <div>
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <div style="width:12px;height:12px;border-radius:50%;background:var(--purple);"></div>
+                  <span style="font-size:13px;font-weight:600;">You: 9</span>
+                </div>
+              </div>
+              <div>
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <div style="width:12px;height:12px;border-radius:50%;background:var(--pink);"></div>
+                  <span style="font-size:13px;font-weight:600;">Jordan: 8</span>
+                </div>
+              </div>
+            </div>
+            <div class="results-average">
+              <div class="results-average-label">Average</div>
+              <div class="results-average-number">8.5</div>
+              <div class="results-verdict">You're both into it!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="feature-text">
+        <h2>See where you stand.</h2>
+        <p>Once both votes are in, WDYT reveals the full picture. See individual ratings side by side, the combined average, and a clear verdict. No more guessing what the other person really thinks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DARK SECTION: HOW IT WORKS -->
+  <section class="dark-section" id="how-it-works">
+    <h2>Decide together in three steps.</h2>
+    <p>No accounts to manage, no complicated setup. Just share an idea and get an honest answer.</p>
+    <div class="how-it-works">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Share an idea</h3>
+        <p>Type a prompt and pick your friend. Rate how you feel about it from 0 to 10.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>They vote blind</h3>
+        <p>Your friend sees the idea but not your rating. They give their own honest score.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Compare results</h3>
+        <p>Both ratings are revealed at once. See your average and get a clear verdict.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>What do you think?</h2>
+    <p>Download WDYT and find out what they really think.</p>
+    <a href="#" class="cta-button">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Download for iOS
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="appicon.png" alt="WDYT">
+        <p>Honest opinions, no influence.<br>Rate ideas together, blindly.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#">Download</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="#">Help Center</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 WDYT. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
