@@ -200,129 +200,13 @@
     }
 
     .phone-screen {
-      background: #fff;
       border-radius: 30px;
       overflow: hidden;
-      aspect-ratio: 9/19.5;
-      display: flex;
-      flex-direction: column;
     }
 
-    .phone-status-bar {
-      padding: 12px 24px 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .phone-notch {
-      width: 100px;
-      height: 28px;
-      background: var(--gray-800);
-      border-radius: 20px;
-      margin: 0 auto;
-      position: absolute;
-      top: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 3;
-    }
-
-    .phone-content {
-      flex: 1;
-      padding: 48px 20px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .phone-header {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    .phone-section-label {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--gray-400);
-      margin-top: 4px;
-    }
-
-    .phone-card {
-      background: var(--gray-100);
-      border-radius: 16px;
-      padding: 16px;
-    }
-
-    .phone-card-prompt {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--gray-800);
-      line-height: 1.4;
-    }
-
-    .phone-card-meta {
-      margin-top: 8px;
-      font-size: 11px;
-      color: var(--gray-400);
-    }
-
-    .phone-card-ratings {
-      margin-top: 10px;
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .rating-pill {
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .rating-purple {
-      background: rgba(94,92,230,0.12);
-      color: var(--purple);
-    }
-
-    .rating-pink {
-      background: rgba(255,107,138,0.12);
-      color: var(--pink);
-    }
-
-    .rating-avg {
-      font-size: 11px;
-      color: var(--gray-400);
-      margin-left: auto;
-    }
-
-    .phone-verdict {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--purple);
-      margin-top: 4px;
-    }
-
-    .phone-fab {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--purple), var(--pink));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 22px;
-      font-weight: 300;
-      align-self: flex-end;
-      margin-top: auto;
-      box-shadow: 0 4px 16px rgba(94,92,230,0.4);
+    .phone-screen img {
+      width: 100%;
+      display: block;
     }
 
     /* floating notification cards */
@@ -418,156 +302,19 @@
       position: relative;
     }
 
-    .feature-demo {
-      background: var(--gray-100);
-      border-radius: 24px;
-      padding: 40px;
-      text-align: center;
+    .feature-phone {
+      max-width: 280px;
+      margin: 0 auto;
+      background: var(--gray-800);
+      border-radius: 40px;
+      padding: 12px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
     }
 
-    /* blind voting visual */
-    .blind-demo {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
-      align-items: stretch;
-    }
-
-    .blind-card {
-      flex: 1;
-      background: #fff;
-      border-radius: 16px;
-      padding: 24px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    }
-
-    .blind-avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      margin: 0 auto 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 18px;
-      color: #fff;
-    }
-
-    .blind-name {
-      font-weight: 700;
-      font-size: 15px;
-      margin-bottom: 8px;
-    }
-
-    .blind-rating {
-      font-size: 36px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-    }
-
-    .blind-hidden {
-      font-size: 32px;
-      color: var(--gray-200);
-      letter-spacing: 4px;
-    }
-
-    .blind-label {
-      font-size: 12px;
-      color: var(--gray-400);
-      margin-top: 4px;
-    }
-
-    /* results visual */
-    .results-demo {
-      background: #fff;
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    }
-
-    .results-prompt {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 24px;
-      color: var(--gray-800);
-    }
-
-    .results-bar-track {
-      height: 8px;
-      background: var(--gray-100);
-      border-radius: 4px;
-      position: relative;
-      margin-bottom: 20px;
-    }
-
-    .results-bar-fill {
-      height: 100%;
-      border-radius: 4px;
-      background: linear-gradient(90deg, var(--purple), var(--pink));
-    }
-
-    .results-markers {
-      display: flex;
-      justify-content: space-between;
-      position: relative;
-      margin-top: -30px;
-      margin-bottom: 24px;
-      padding: 0 2px;
-    }
-
-    .results-marker {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .marker-dot {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 3px solid #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    }
-
-    .marker-label {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--gray-400);
-    }
-
-    .results-average {
-      text-align: center;
-      padding-top: 16px;
-      border-top: 1px solid var(--gray-100);
-    }
-
-    .results-average-number {
-      font-size: 48px;
-      font-weight: 900;
-      background: linear-gradient(135deg, var(--purple), var(--pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .results-average-label {
-      font-size: 13px;
-      color: var(--gray-400);
-      margin-bottom: 4px;
-    }
-
-    .results-verdict {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 6px 16px;
-      border-radius: 20px;
-      background: rgba(94,92,230,0.08);
-      color: var(--purple);
-      font-size: 13px;
-      font-weight: 600;
+    .feature-phone img {
+      width: 100%;
+      display: block;
+      border-radius: 30px;
     }
 
     /* ---- DARK SECTION ---- */
@@ -689,7 +436,7 @@
       max-width: 1080px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.5fr repeat(3, 1fr);
+      grid-template-columns: 1.5fr 1fr;
       gap: 48px;
     }
 
@@ -833,40 +580,8 @@
       </div>
     </div>
     <div class="phone-frame">
-      <div class="phone-notch"></div>
       <div class="phone-screen">
-        <div class="phone-content">
-          <div class="phone-header">Ideas</div>
-
-          <div class="phone-section-label">Waiting for your vote</div>
-          <div class="phone-card">
-            <div class="phone-card-prompt">Try that new ramen place downtown?</div>
-            <div class="phone-card-meta">From Alex</div>
-          </div>
-
-          <div class="phone-section-label">Results</div>
-          <div class="phone-card">
-            <div class="phone-card-prompt">Weekend camping trip</div>
-            <div class="phone-card-ratings">
-              <span class="rating-pill rating-purple">You: 9</span>
-              <span class="rating-pill rating-pink">Alex: 8</span>
-              <span class="rating-avg">Avg 8.5</span>
-            </div>
-            <div class="phone-verdict">You're both into it!</div>
-          </div>
-
-          <div class="phone-card">
-            <div class="phone-card-prompt">Learn pottery together</div>
-            <div class="phone-card-ratings">
-              <span class="rating-pill rating-purple">You: 3</span>
-              <span class="rating-pill rating-pink">Alex: 7</span>
-              <span class="rating-avg">Avg 5.0</span>
-            </div>
-            <div class="phone-verdict">You two are far apart on this.</div>
-          </div>
-
-          <div class="phone-fab">+</div>
-        </div>
+        <img src="screenshot-welcome.png" alt="WDYT app welcome screen">
       </div>
     </div>
   </section>
@@ -879,21 +594,8 @@
         <p>When you send an idea, your rating stays hidden. Your friend votes without seeing your score. Only when both of you have weighed in do the results appear. No anchoring. No pressure. Just honest takes.</p>
       </div>
       <div class="feature-visual">
-        <div class="feature-demo">
-          <div class="blind-demo">
-            <div class="blind-card">
-              <div class="blind-avatar" style="background: var(--purple);">Y</div>
-              <div class="blind-name">You</div>
-              <div class="blind-rating" style="color: var(--purple);">8</div>
-              <div class="blind-label">Voted</div>
-            </div>
-            <div class="blind-card">
-              <div class="blind-avatar" style="background: var(--pink);">A</div>
-              <div class="blind-name">Alex</div>
-              <div class="blind-hidden">? ? ?</div>
-              <div class="blind-label">Waiting...</div>
-            </div>
-          </div>
+        <div class="feature-phone">
+          <img src="screenshot-new-idea.png" alt="WDYT new idea screen showing blind rating">
         </div>
       </div>
     </div>
@@ -903,32 +605,8 @@
   <section class="feature-section">
     <div class="feature-grid reverse">
       <div class="feature-visual">
-        <div class="feature-demo">
-          <div class="results-demo">
-            <div class="results-prompt">"Move in together?"</div>
-            <div class="results-bar-track">
-              <div class="results-bar-fill" style="width: 85%;"></div>
-            </div>
-            <div style="display: flex; justify-content: space-between; padding: 0 2px; margin-bottom: 24px;">
-              <div>
-                <div style="display:flex;align-items:center;gap:6px;">
-                  <div style="width:12px;height:12px;border-radius:50%;background:var(--purple);"></div>
-                  <span style="font-size:13px;font-weight:600;">You: 9</span>
-                </div>
-              </div>
-              <div>
-                <div style="display:flex;align-items:center;gap:6px;">
-                  <div style="width:12px;height:12px;border-radius:50%;background:var(--pink);"></div>
-                  <span style="font-size:13px;font-weight:600;">Jordan: 8</span>
-                </div>
-              </div>
-            </div>
-            <div class="results-average">
-              <div class="results-average-label">Average</div>
-              <div class="results-average-number">8.5</div>
-              <div class="results-verdict">You're both into it!</div>
-            </div>
-          </div>
+        <div class="feature-phone">
+          <img src="screenshot-results.png" alt="WDYT results screen showing ratings comparison">
         </div>
       </div>
       <div class="feature-text">
@@ -983,17 +661,6 @@
         <a href="#features">Features</a>
         <a href="#how-it-works">How It Works</a>
         <a href="mailto:christopherwong@hey.com?subject=WDYT%20Beta%20Access%20Request&body=Hi%2C%20I%27d%20love%20to%20get%20beta%20access%20to%20WDYT!%20Please%20send%20me%20an%20invite.">Get the App</a>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <a href="#">About</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-      </div>
-      <div class="footer-col">
-        <h4>Support</h4>
-        <a href="#">Help Center</a>
-        <a href="#">Contact</a>
       </div>
     </div>
     <div class="footer-bottom">
